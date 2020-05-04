@@ -11,14 +11,15 @@ class TodoForm extends React.Component {
 
     handleChanges = e => {
         this.setState({[e.target.name]: e.target.value},
-        () => console.log(this.state.keyword))
-    };
+        // () => console.log(this.state.keyword)
+    )};
 
     submitForm = e => {
         e.preventDefault();
         this.props.addTask(this.state.keyword);
         this.setState({keyword: ''});
     };
+
 
     render(){
     return (

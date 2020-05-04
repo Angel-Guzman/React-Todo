@@ -3,7 +3,7 @@
     padding: 5px;
     margin-top: 10px;
 }
-.item.completed {
+.completed {
     text-decoration: line-through;
     background-color: red;
 }
