@@ -3,11 +3,11 @@ import Todo from './Todo'
 
 const TodoList = props => {
     return (
-        <div>
+        <div >
             {props.tasks.map(item => (
-                <Todo key={item.id} item={item} />
+                <Todo toggleComplete={props.toggleComplete} key={item.id} item={item} />
             ))}
-            <button type='submit'>Clear</button>
+            <button type='submit'>Clear Completed</button>
         </div>
     )
 }

@@ -32,12 +32,33 @@ class App extends React.Component {
     };
   }
 
-  addTask = taskName => {
+  addTask = e => {
     const newTask = {
-      task: taskName,
+      task: e,
+      id: Date.now(),
+      completed: false,
     }
     this.setState({ 
       tasks: [...this.state.tasks, newTask]
+    })
+  }
+
+  toggleComplete = selectedTask => {
+    // when I click
+    let updatedTask, updatedTaskIndex
+    // get the task I need
+    // filter each task 
+    this.state.tasks.filter((e, index) => { 
+      if(selectedTask == e.id){
+        updatedTask = e
+        updatedTaskIndex = index
+      }
+    })
+    updatedTask.completed = !updatedTask.completed
+    const newState = [...this.state.tasks]
+    newState[updatedTaskIndex] = updatedTask
+    this.setState({
+      tasks: newState
     })
   }
 
@@ -46,8 +67,13 @@ class App extends React.Component {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm addTask={this.addTask} />
-        <TodoList tasks={this.state.tasks} />
+        <TodoForm 
+        addTask={this.addTask} 
+        />
+        <TodoList 
+        toggleComplete={this.toggleComplete} 
+        tasks={this.state.tasks} 
+        />
       </div>
     );
   }
